@@ -38,37 +38,48 @@ function Dog(props) {
         </div>
       )}
       <div className="dog-stats">
-        <div>
-          <label>Name</label>
-          <div>{dog.name}</div>
-        </div>
+        {dog.name && (
+          <div>
+            <label>Name</label>
+            <div>{dog.name}</div>
+          </div>
+        )}
         {dog.origin && (
           <div>
             <label>Origin</label>
             <div>{dog.origin}</div>
           </div>
         )}
-        <div>
-          <label>Weight</label>
-          <div>{displayWeight(dog.weight)}</div>
-        </div>
-        <div>
-          <label>Height</label>
-          <div>{displayHeight(dog.height)}</div>
-        </div>
-        <div>
-          <label>Life span</label>
-          <div>{dog.life_span}</div>
-        </div>
-        <div>
-          <label>Temperament</label>
-          <div>{dog.temperament}</div>
-        </div>
-
-        <div>
-          <label>Great for</label>
-          <div>{dog.bred_for}</div>
-        </div>
+        {dog.weight && (
+          <div>
+            <label>Weight</label>
+            <div>{displayWeight(dog.weight)}</div>
+          </div>
+        )}
+        {dog.height && (
+          <div>
+            <label>Height</label>
+            <div>{displayHeight(dog.height)}</div>
+          </div>
+        )}
+        {dog.life_span && (
+          <div>
+            <label>Life span</label>
+            <div>{dog.life_span}</div>
+          </div>
+        )}
+        {dog.temperament && (
+          <div>
+            <label>Temperament</label>
+            <div>{dog.temperament}</div>
+          </div>
+        )}
+        {dog.bred_for && (
+          <div>
+            <label>Great for</label>
+            <div>{dog.bred_for}</div>
+          </div>
+        )}
       </div>
     </div>
   );
