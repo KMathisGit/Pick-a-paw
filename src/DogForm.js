@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import Icon from "@material-ui/core/Icon";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Button, CircularProgress, Typography } from "@material-ui/core";
 import { getBreedList } from "./api";
 import PawSlider from "./PawSlider";
 import "./DogForm.scss";
+import { useLocalStorageState } from "./utils";
 
 let ALL_DOGS = null;
 const WEIGHT_RANGE = [2, 200];
@@ -40,7 +42,7 @@ const insideWeightRange = (dogWeight, acceptableRange) => {
 };
 
 function DogForm(props) {
-  const { pickDog } = props;
+  const { pickDog, favorites, toggleFavorite } = props;
   const [dogs, setDogs] = React.useState(props.dogs);
   const [weight, setWeight] = React.useState(WEIGHT_RANGE);
   const [height, setHeight] = React.useState(HEIGHT_RANGE);
@@ -73,7 +75,6 @@ function DogForm(props) {
       );
     });
     setDogs(filteredDogs);
-    debugger;
   }, [weight, height]);
 
   const clearFilters = () => {
@@ -133,8 +134,20 @@ function DogForm(props) {
         id="autocomplete-dog"
         options={dogs}
         getOptionLabel={(option) => option.name}
+        renderOption={(option) => (
+          <React.Fragment>
+            <Icon
+              style={{ marginRight: "8px", color: "hotpink" }}
+              onClick={(e) => toggleFavorite(e, option.id)}
+            >
+              {favorites.includes(option.id) ? "favorite" : "favorite_outline"}
+            </Icon>
+            {option.name}
+          </React.Fragment>
+        )}
         style={{
           width: "100%",
+          margin: "16px 0",
         }}
         renderInput={(params) => (
           <TextField {...params} label="Dog" variant="outlined" />
