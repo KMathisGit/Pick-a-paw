@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.scss";
+import Dog from "./Dog";
+import DogForm from "./DogForm";
 
 function App() {
+  const [dog, setDog] = React.useState(null);
+
+  const pickDog = (dog) => {
+    if (dog) setDog(dog);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <>
+      <div className="App">
+        <header>Pick-a-paw</header>
+        <DogForm pickDog={pickDog} />
+        {dog && <Dog dog={dog} />}
+      </div>
+      <footer>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          © <span>{new Date().getFullYear()}</span> Kevin M. All rights reserved
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <p>Powered by TheDogAPI</p>
+      </footer>
+    </>
   );
 }
 

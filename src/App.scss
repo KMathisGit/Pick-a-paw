@@ -1,0 +1,35 @@
+.App {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 800px;
+
+    @media screen and (max-width: 767px) {
+        width: 90%
+    }
+}
+
+header {
+    margin-bottom: 24px;
+    font-size: calc(24px + 5vmin);
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 2px #583110;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    height: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+    p {
+        margin: 0;
+    }
+}

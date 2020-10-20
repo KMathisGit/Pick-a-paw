@@ -1,0 +1,25 @@
+.dog-form {
+    margin: 0 auto;
+    max-width: 600px;
+
+
+}
+
+.filter-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    // border: 2px solid;
+    // border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 32px 0;
+    margin: 16px 0;
+    // color: #fff
+
+    button {
+        margin-top: 16px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,50 @@
+.dog-card-container {
+    display: flex;
+    margin: 32px 0;
+    background: #333;
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+    }
+
+    .img-container {
+        width: 100%;
+        max-width: 500px;
+        max-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 0 16px 16px;
+        overflow: hidden;
+
+        @media screen and (max-width: 767px) {
+            padding: 16px;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+
+        }
+    }
+
+
+    .dog-stats {
+        padding: 16px;
+        border-left: none;
+        color: #fff;
+        min-width: 250px;
+
+        @media screen and (max-width: 767px) {}
+
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        >div {
+            margin-bottom: 8px;
+        }
+    }
+}
