@@ -135,8 +135,6 @@ function DogForm(props) {
         getOptionLabel={(option) => option.name}
         style={{
           width: "100%",
-          background: "rgba(255,255,255,0.5)",
-          color: "#fff",
         }}
         renderInput={(params) => (
           <TextField {...params} label="Dog" variant="outlined" />

@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const CustomPawSlider = withStyles({
   root: {
-    color: "#909090",
+    // color: "#909090",
     height: 24,
     display: "flex",
     alignItems: "center",
@@ -16,6 +16,7 @@ const CustomPawSlider = withStyles({
     width: 24,
     backgroundImage: "url('./slider-thumb.png')",
     marginLeft: -12,
+    marginTop: -2,
     "&:focus, &:hover, &$active": {
       boxShadow: "inherit",
     },
@@ -26,11 +27,11 @@ const CustomPawSlider = withStyles({
     top: "calc(-100% - 6px)",
   },
   track: {
-    height: 4,
+    height: 8,
     borderRadius: 4,
   },
   rail: {
-    height: 4,
+    height: 8,
     borderRadius: 4,
   },
 })(Slider);
