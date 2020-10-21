@@ -88,6 +88,7 @@ function DogForm(props) {
   const clearFilters = () => {
     setWeight(WEIGHT_RANGE);
     setHeight(HEIGHT_RANGE);
+    setOnlyFavorites(false);
     setDogs(ALL_DOGS);
   };
 
