@@ -76,11 +76,11 @@ function DogForm(props) {
   useEffect(() => {
     if (!dogs) return;
     const filteredDogs = ALL_DOGS.filter((d) => {
-      return insideWeightRange(d.weight, weight) &&
+      return (
+        insideWeightRange(d.weight, weight) &&
         insideHeightRange(d.height, height) &&
-        onlyFavorites
-        ? favorites.includes(d.id)
-        : true;
+        (onlyFavorites ? favorites.includes(d.id) : true)
+      );
     });
     setDogs(filteredDogs);
   }, [weight, height, onlyFavorites]);
