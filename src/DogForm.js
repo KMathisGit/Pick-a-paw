@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import Icon from "@material-ui/core/Icon";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { Button, CircularProgress, Typography } from "@material-ui/core";
+import {
+  Button,
+  Checkbox,
+  CircularProgress,
+  FormControlLabel,
+  Typography,
+} from "@material-ui/core";
 import { getBreedList } from "./api";
 import PawSlider from "./PawSlider";
 import "./DogForm.scss";
@@ -46,6 +52,7 @@ function DogForm(props) {
   const [dogs, setDogs] = React.useState(props.dogs);
   const [weight, setWeight] = React.useState(WEIGHT_RANGE);
   const [height, setHeight] = React.useState(HEIGHT_RANGE);
+  const [onlyFavorites, setOnlyFavorites] = React.useState(false);
   const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
@@ -69,13 +76,14 @@ function DogForm(props) {
   useEffect(() => {
     if (!dogs) return;
     const filteredDogs = ALL_DOGS.filter((d) => {
-      return (
-        insideWeightRange(d.weight, weight) &&
-        insideHeightRange(d.height, height)
-      );
+      return insideWeightRange(d.weight, weight) &&
+        insideHeightRange(d.height, height) &&
+        onlyFavorites
+        ? favorites.includes(d.id)
+        : true;
     });
     setDogs(filteredDogs);
-  }, [weight, height]);
+  }, [weight, height, onlyFavorites]);
 
   const clearFilters = () => {
     setWeight(WEIGHT_RANGE);
@@ -91,6 +99,10 @@ function DogForm(props) {
     setHeight(newValue);
   };
 
+  const handleFavoriteCheckbox = (event, newValue) => {
+    setOnlyFavorites(newValue);
+  };
+
   const pickDogHandler = (event, newValue) => {
     return pickDog(newValue);
   };
@@ -101,7 +113,7 @@ function DogForm(props) {
     <div className="dog-form">
       <div className="filter-controls">
         <Typography id="weight-slider" gutterBottom>
-          Height: <strong>{weight[0]}</strong> to <strong>{weight[1]}</strong>{" "}
+          Weight: <strong>{weight[0]}</strong> to <strong>{weight[1]}</strong>{" "}
           pounds
         </Typography>
         <PawSlider
@@ -125,6 +137,17 @@ function DogForm(props) {
           min={5}
           max={40}
         />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={onlyFavorites}
+              onChange={handleFavoriteCheckbox}
+              color="secondary"
+            ></Checkbox>
+          }
+          label="Show only favorites"
+        />
+
         <Button variant="contained" color="primary" onClick={clearFilters}>
           Reset Filters
         </Button>

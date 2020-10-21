@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
-import { createMuiTheme, ThemeProvider, withTheme } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
       main: "#222",
     },
-    secondary: { main: "#c1820f" },
+    secondary: { main: "#ff69b4" },
   },
   overrides: {
     MuiTextField: {
