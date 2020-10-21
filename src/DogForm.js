@@ -12,7 +12,6 @@ import {
 import { getBreedList } from "./api";
 import PawSlider from "./PawSlider";
 import "./DogForm.scss";
-import { useLocalStorageState } from "./utils";
 
 let ALL_DOGS = null;
 const WEIGHT_RANGE = [2, 200];
